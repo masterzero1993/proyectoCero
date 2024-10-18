@@ -2,6 +2,7 @@
 if (isset($_POST["enviar"])) {
     $nombre = $_POST["nombre"];
     $email = $_POST["email"]; #correo de la persona que escribe el mensaje
+     $telefono = $_POST["tel"];
     $mensaje = $_POST["mensaje"];
 
     $destinatario = "cumiquirdavid@gmail.com"; #aqui insertar el correo al que deseas que llegue el mensaje que envies en el formulario
