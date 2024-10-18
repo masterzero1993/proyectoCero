@@ -10,6 +10,7 @@ if (isset($_POST["enviar"])) {
 
     $contenido = "Nombre: $nombre \n";
     $contenido .= "Email: $email \n";
+    $contenido .= "telefono: $telefono \n";
     $contenido .= "Mensaje: $mensaje";
 
     $header = "From: ejemplo@correo.com"; #aqui insertas el correo del remitente en el encabezado del correo.
