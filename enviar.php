@@ -1,24 +1,24 @@
 <?php
-$name = $_POST['name'];
-$mail = $_POST['mail'];
-$phone = $_POST['phone'];
-$message = $_POST['message'];
+if (isset($_POST["enviar"])) {
+    $nombre = $_POST["nombre"];
+    $email = $_POST["email"]; #correo de la persona que escribe el mensaje
+    $mensaje = $_POST["mensaje"];
 
-$header = 'From: ' . $mail . " \r\n";
-$header .= "X-Mailer: PHP/" . phpversion() . " \r\n";
-$header .= "Mime-Version: 1.0 \r\n";
-$header .= "Content-Type: text/plain";
+    $destinatario = "cumiquirdavid@gmail.com"; #aqui insertar el correo al que deseas que llegue el mensaje que envies en el formulario
+    $asunto = "nuevo mensaje de $email";
 
-$message = "Este mensaje fue enviado por: " . $name . " \r\n";
-$message .= "Su e-mail es: " . $mail . " \r\n";
-$message .= "Teléfono de contacto: " . $phone . " \r\n";
-$message .= "Mensaje: " . $_POST['message'] . " \r\n";
-$message .= "Enviado el: " . date('d/m/Y', time());
+    $contenido = "Nombre: $nombre \n";
+    $contenido .= "Email: $email \n";
+    $contenido .= "Mensaje: $mensaje";
 
-$para = 'cumiquirdavid@gmail.com';
-$asunto = 'Mensaje de... (Escribe como quieres que se vea el remitente de tu correo)';
+    $header = "From: ejemplo@correo.com"; #aqui insertas el correo del remitente en el encabezado del correo.
 
-mail($para, $asunto, utf8_decode($message), $header);
+    $mail = mail($destinatario, $asunto, $contenido, $header);
 
-header("Location:index.html");
+    if ($mail) {
+        echo "<script>alert('El correo se envio correctamente :)')</script>";
+    } else {
+        echo "<script>alert('El correo no se pudo enviar, intente nuevamente :(')</script>";
+    }
+}
 ?>
