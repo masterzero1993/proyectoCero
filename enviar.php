@@ -1,26 +1,22 @@
-<?php
-if (isset($_POST["enviar"])) {
-    $nombre = $_POST["nombre"];
-    $email = $_POST["email"]; #correo de la persona que escribe el mensaje
-     $telefono = $_POST["tel"];
-    $mensaje = $_POST["mensaje"];
+<?php  
 
-    $destinatario = "cumiquirdavid@gmail.com"; #aqui insertar el correo al que deseas que llegue el mensaje que envies en el formulario
-    $asunto = "nuevo mensaje de $email";
+// Llamando a los campos
+$nombre = $_POST['nombre'];
+$correo = $_POST['email'];
+$telefono = $_POST['tel'];
+$mensaje = $_POST['mensaje'];
 
-    $contenido = "Nombre: $nombre \n";
-    $contenido .= "Email: $email \n";
-    $contenido .= "telefono: $telefono \n";
-    $contenido .= "Mensaje: $mensaje";
+// Datos para el correo
+$destinatario = "cumiquirdavid@gmail.com";
+$asunto = "Contacto desde nuestra web";
 
-    $header = "From: ejemplo@correo.com"; #aqui insertas el correo del remitente en el encabezado del correo.
+$carta = "De: $nombre \n";
+$carta .= "Correo: $correo \n";
+$carta .= "Telefono: $telefono \n";
+$carta .= "Mensaje: $mensaje";
 
-    $mail = mail($destinatario, $asunto, $contenido, $header);
+// Enviando Mensaje
+mail($destinatario, $asunto, $carta);
+header('Location:index.html');
 
-    if ($mail) {
-        echo "<script>alert('El correo se envio correctamente :)')</script>";
-    } else {
-        echo "<script>alert('El correo no se pudo enviar, intente nuevamente :(')</script>";
-    }
-}
 ?>
