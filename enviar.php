@@ -1,9 +1,9 @@
 <?php
 $para      = 'cumiquirdavid@gmail.com';
-$titulo    = 'El título';
-$mensaje   = 'Hola';
-$cabeceras = 'From: webmaster@example.com' . "\r\n" .
-    'Reply-To: webmaster@example.com' . "\r\n" .
+$titulo    = $_POST['nombre'];
+$mensaje   = $_POST['mensaje'];
+$cabeceras = 'From: laveronica_01@hotmail.com' . "\r\n" .
+    'Reply-To: laveronica_01@hotmail.com' . "\r\n" .
     'X-Mailer: PHP/' . phpversion();
 
 mail($para, $titulo, $mensaje, $cabeceras);
