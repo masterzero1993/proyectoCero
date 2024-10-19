@@ -1,22 +1,45 @@
-<?php  
+<?php
+if($_SERVER['REQUEST_METHOD'] != 'POST' ){
+    header("Location: index.html" );
+}
 
-// Llamando a los campos
+/*
+if( ! isset( $_POST['nombre'] ) ){
+    header("Location: index.html" );
+}
+*/
+
+
 $nombre = $_POST['nombre'];
-$correo = $_POST['email'];
-$telefono = $_POST['tel'];
+$email = $_POST['email'];
+$apellido = $_POST['tel'];
 $mensaje = $_POST['mensaje'];
 
-// Datos para el correo
-$destinatario = "cumiquirdavid@gmail.com";
-$asunto = "Contacto desde nuestra web";
+if( empty(trim($nombre)) ) $nombre = 'anonimo';
+if( empty(trim($apellido)) ) $apellido = '';
 
-$carta = "De: $nombre \n";
-$carta .= "Correo: $correo \n";
-$carta .= "Telefono: $telefono \n";
-$carta .= "Mensaje: $mensaje";
+$body = <<<HTML
+    <h1>Contacto desde la web</h1>
+    <p>De: $nombre $apellido / $email</p>
+    <h2>Mensaje</h2>
+    $mensaje
+HTML;
 
-// Enviando Mensaje
-mail($destinatario, $asunto, $carta);
-header('Location:index.html');
+//sintaxis de los emails email@algo.com || 
+// nombre <email@algo.com>
 
-?>
+$headers = "MIME-Version: 1.0 \r\n";
+$headers.= "Content-type: text/html; charset=utf-8 \r\n";
+$headers.= "From: $nombre $apellido <$email> \r\n";
+$headers.= "To: Sitio web <ejemplo@germanrodriguez.com.ar> \r\n";
+// $headers.= "Cc: copia@email.com \r\n";
+// $headers.= "Bcc: copia-oculta@email.com \r\n";
+
+
+//REMITENTE (NOMBRE/APELLIDO - EMAIL)
+//ASUNTO 
+//CUERPO 
+$rta = mail('cumiquirdavid@gmail.com', "Mensaje web: $asunto", $body, $headers );
+//var_dump($rta);
+
+header("Location: index.html.html" );
