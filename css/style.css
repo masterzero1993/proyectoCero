@@ -1,0 +1,35 @@
+
+div{
+   
+    border-radius: 10px;
+    width: 50%;
+    height: 700px;
+    background-color: rgb(0, 0, 0, 0.7);
+    margin: auto;
+    text-align: center;
+    margin-top: 40px;
+}
+.input{
+    margin-top: 70px;
+    background-color: black;
+    width: 300px;
+    height: 30px;
+    color: white;
+
+}
+#mensaje{
+    background-color: black;
+    width: 500px;
+    height: 200px;
+    margin-top: 50px;
+    color: white;
+
+}
+button{
+    width: 100px;
+    background-color: rgb(0, 0, 0, 0.7);
+    padding: 4px 8px 4px 8px;
+    color: white;
+    margin-top: 30px;
+    
+}
